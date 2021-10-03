@@ -2,24 +2,29 @@
     <div>
       <input type="text" placeholder="Cerca un titolo" v-model="research">
       <button>Inizia ricerca</button>
-      <div class="ul_box">
+      
 
-          <ul >
-            <li v-for="element, index in chunk" :key="index">
-              {{element}}
-            </li>
-          </ul>
+    <!--      <ul >
+            
+              <li v-for="element, index in titleArr" :key="index">
+                {{element}}
+                <Card />
+              </li>
+            
+          </ul>-->
 
-                 <!--Titolo title
-                  Titolo Originale original_title
-                  Lingua original_language
-                  Voto vote_average-->
-      </div>
+
+          <div v-for="(element, index) in chunk" :key="index">
+             <Card :movie="element"/>
+
+          </div>
+
     </div>
 </template>
 
 <script>
 import axios from 'axios';
+import Card from './Card.vue';
 
 export default {
   name: 'Main',
@@ -27,11 +32,14 @@ export default {
     
   },
 
+  components: {
+   Card,
+  },
+
   data : function () {
     return {
       titleArr : [],
-      chunk : [],
-      uniqueMovies : [],
+      chunk : {},
       research : ''
     }
   },
@@ -41,11 +49,11 @@ export default {
           
           return this.chunk.filter((input) => { 
               //if (this.titleArr.indexOf(input) > -1) {
-                return input.includes(this.research);
+                return input.includes(this.research)
               //}
           
           });
-
+          
           
       }       
     },
@@ -59,17 +67,29 @@ export default {
       //console.log(res.data.results[0].title)
 
       for (let i=0; i<res.data.results.length; i++) {
+
+        this.chunk.title = res.data.results[i].title;
+        this.chunk.original_title = res.data.results[i].original_title;
+        this.chunk.original_language = res.data.results[i].original_language;
+        this.chunk.vote_average = res.data.results[i].vote_average;
+
         this.titleArr.push(res.data.results[i].title, res.data.results[i].original_title,
-         res.data.results[i].original_language, res.data.results[i].vote_average)
+        res.data.results[i].original_language, res.data.results[i].vote_average)
+        
+      
+        console.log(this.chunk)
       }
 
+      console.log(typeof(this.chunk)) //object
+   
+      /*
       while (this.titleArr.length > 0) {
 
       this.chunk = this.titleArr.splice(0,4)
 
 }
 
-    
+    */
 
 
       //console.log(this.titleArr)
