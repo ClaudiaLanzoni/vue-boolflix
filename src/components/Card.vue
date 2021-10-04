@@ -1,6 +1,9 @@
 <template>
     <div class="movie_box">
-        <div>{{movie}}</div>
+        <div>{{movie.title}}</div>
+        <div>{{movie.original_title}}</div>
+        <div>{{movie.original_language}}</div>
+        <div>{{movie.vote_average}}</div>
     </div>
 </template>
 

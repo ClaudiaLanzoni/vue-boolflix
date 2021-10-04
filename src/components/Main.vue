@@ -1,35 +1,19 @@
 <template>
     <div>
-      <input type="text" placeholder="Cerca un titolo" v-model="research">
-      <button>Inizia ricerca</button>
-      
 
-    <!--      <ul >
-            
-              <li v-for="element, index in titleArr" :key="index">
-                {{element}}
-                <Card />
-              </li>
-            
-          </ul>-->
-
-
-          <div v-for="(element, index) in chunk" :key="index">
-             <Card :movie="element"/>
-
-          </div>
+      <Card v-for="(element, index) in pellicole" :key="index" :movie="element"/>
 
     </div>
 </template>
 
 <script>
-import axios from 'axios';
+//import axios from 'axios';
 import Card from './Card.vue';
 
 export default {
   name: 'Main',
   props: {
-    
+    pellicole : Array
   },
 
   components: {
@@ -38,26 +22,32 @@ export default {
 
   data : function () {
     return {
-      titleArr : [],
-      chunk : {},
-      research : ''
+   
     }
   },
 
-  computed: {
-    filterMovie: function(){
-          
-          return this.chunk.filter((input) => { 
-              //if (this.titleArr.indexOf(input) > -1) {
-                return input.includes(this.research)
-              //}
-          
-          });
-          
-          
-      }       
-    },
-   
+    methods: {
+    
+      
+    
+  },
+
+  
+  
+}
+</script>
+
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style scoped lang="scss">
+ 
+  .ul_box {
+    border: 3px solid black;
+  }
+
+
+</style>
+
+<!--
 
     updated : function () {
 
@@ -105,17 +95,6 @@ export default {
   
     )//});
  
-  }
-  
-}
-</script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped lang="scss">
- 
-  .ul_box {
-    border: 3px solid black;
-  }
+  }-->
 
 
-</style>

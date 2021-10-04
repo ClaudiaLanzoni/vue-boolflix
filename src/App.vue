@@ -1,19 +1,46 @@
 <template>
   <div id="app">
-    
-    <Main />
+    <Header @searching='search'/>
+    <Main :pellicole="movies"/>
   </div>
 </template>
 
 <script>
+import Header from './components/Header.vue'
 import Main from './components/Main.vue'
+import axios from 'axios'
 
 export default {
   name: 'App',
   components: {
+    Header,
     Main,
     
-  }
+  },
+
+  data : function () {
+    return {
+      apiMovie : 'https://api.themoviedb.org/3/search/movie',
+      apiKey : 'cb11640258dfdce63e5b0a147809a751',
+      movies : []
+     
+    }
+  },
+
+  methods: {
+    search : function (needle) {
+      axios.get (this.apiMovie, {
+        params : {
+          api_key : this.apiKey,
+          query : needle,
+          language : 'it-IT'
+        }
+      }).then(
+        (risposta) => {
+          this.movies = [...risposta.data.results]
+        })
+    }
+  },
 }
 </script>
 
