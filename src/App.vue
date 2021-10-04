@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <Header @searching='search'/>
-    <Main :pellicole="movies"/>
+    <Main :pellicole="movies" :tvSeries="serieTv"/>
   </div>
 </template>
 
@@ -21,8 +21,10 @@ export default {
   data : function () {
     return {
       apiMovie : 'https://api.themoviedb.org/3/search/movie',
+      apiSeries : 'https://api.themoviedb.org/3/search/tv',
       apiKey : 'cb11640258dfdce63e5b0a147809a751',
-      movies : []
+      movies : [],
+      serieTv : []
      
     }
   },
@@ -39,8 +41,19 @@ export default {
         (risposta) => {
           this.movies = [...risposta.data.results]
         })
+
+        axios.get (this.apiSeries, {
+        params : {
+          api_key : this.apiKey,
+          query : needle,
+          language : 'it-IT'
+        }
+      }).then(
+        (risposta) => {
+          this.serieTv = [...risposta.data.results]
+        })
     }
-  },
+    }
 }
 </script>
 

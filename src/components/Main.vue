@@ -1,7 +1,10 @@
 <template>
     <div>
-
+      <h1>Film</h1>
       <Card v-for="(element, index) in pellicole" :key="index" :movie="element"/>
+
+      <h1>Serie TV</h1>
+      <Card v-for="element in tvSeries" :key="element.id" :movie="element"/>
 
     </div>
 </template>
@@ -13,7 +16,8 @@ import Card from './Card.vue';
 export default {
   name: 'Main',
   props: {
-    pellicole : Array
+    pellicole : Array,
+    tvSeries : Array
   },
 
   components: {
