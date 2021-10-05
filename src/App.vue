@@ -1,7 +1,9 @@
 <template>
   <div id="app">
-    <Header @searching='search'/>
-    <Main :pellicole="movies" :tvSeries="serieTv"/>
+    <div class="wrapper">
+      <Header @searching='search'/>
+      <Main :pellicole="movies" :tvSeries="serieTv"/>
+    </div>
   </div>
 </template>
 
@@ -58,12 +60,14 @@ export default {
 </script>
 
 <style lang="scss">
+/**@import"~fortawesome/fontawesome-free/css/all.css";*/
+@import'~bootstrap/scss/bootstrap';
+
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+    .wrapper {
+      background-color: grey;
+      height: 200vh;
+    }
+
 }
 </style>

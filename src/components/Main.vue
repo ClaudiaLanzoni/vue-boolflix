@@ -1,12 +1,13 @@
 <template>
-    <div>
-      <h1>Film</h1>
-      <Card v-for="(element, index) in pellicole" :key="index" :movie="element"/>
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+               <Card v-for="(element, index) in pellicole" :key="index" :movie="element"/>
 
-      <h1>Serie TV</h1>
-      <Card v-for="element in tvSeries" :key="element.id" :movie="element"/>
-
-    </div>
+              <!--  <Card v-for="element in tvSeries" :key="element.id" :movie="element"/>-->
+            </div>
+          </div>
+        </div>
 </template>
 
 <script>
@@ -44,9 +45,6 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
  
-  .ul_box {
-    border: 3px solid black;
-  }
 
 
 </style>
