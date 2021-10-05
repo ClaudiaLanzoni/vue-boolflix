@@ -58,6 +58,7 @@ export default {
         height: 465px;
         width: 350px;
         font-size: 12px;
+        margin: 20px;
     }
 
     .movie_img {

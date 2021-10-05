@@ -1,10 +1,9 @@
 <template>
         <div class="container">
           <div class="row">
-            <div class="col-12">
+            <div class="col-3">
                <Card v-for="(element, index) in pellicole" :key="index" :movie="element"/>
-
-              <!--  <Card v-for="element in tvSeries" :key="element.id" :movie="element"/>-->
+                <Card v-for="element in tvSeries" :key="element.id" :movie="element"/>
             </div>
           </div>
         </div>
